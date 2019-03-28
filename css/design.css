@@ -1,0 +1,623 @@
+/* Put out m and p from the html */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* Just because need little font */
+@font-face {
+    font-family: "LoudAndClear";
+    src: url(font/Loud-and-clear.ttf);
+    font-style: normal;
+    font-weight: normal;
+}
+
+/* HTML and body style */
+html {
+    background-color: white;
+}
+
+body {
+    background-color: white;
+    height: 100%;
+    width: 100%;
+}
+
+/* Formatting header */
+header {
+    /* Fond carbone */
+    background:
+    linear-gradient(27deg, #151515 5px, transparent 5px) 0 5px,
+    linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0px,
+    linear-gradient(27deg, #222 5px, transparent 5px) 0px 10px,
+    linear-gradient(207deg, #222 5px, transparent 5px) 10px 5px,
+    linear-gradient(90deg, #1b1b1b 10px, transparent 10px),
+    linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424);
+    background-color: #131313;
+    background-size: 20px 20px;
+    display: flex;
+    justify-content: space-between;
+    height: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    width: 95%;
+}
+
+.headerG {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+
+}
+
+.headerG h1 {
+    color: #26c4ec;
+    font-weight: bold;
+    font-size: 4em;
+    letter-spacing: 0.2em;
+    margin-left: 3%;
+    margin-top: 5%;
+    width: 70%;
+}
+
+.textHeader {
+    display: flex;
+    flex-direction: column;
+    transform: rotate(-15deg);
+}
+
+.text-incline {
+    color: white;
+    font-family: "LoudAndClear";
+    font-size: 2.5em;
+    letter-spacing: 0.3em;
+    margin-bottom: 0;
+    margin-left: 17%;
+    text-align: center;
+}
+
+.barre {
+    background-color: white;
+    height: 0.2em;
+    margin-bottom: 0;
+    margin-left: 20%;
+    margin-right: 4%;
+    margin-top: 0;
+}
+
+/* Try to do a special form, neon style */
+.dsp {
+    /* text-shadow:0 0 5px #fff, 0 0 10px #fff, 0 0 20px #26c4ec, 0 0 30px #26c4ec, 0 0 40px #26c4ec, 0 0 55px #26c4ec, 0 0 75px #26c4ec; */
+    -webkit-animation: neon2 1.5s ease-in-out infinite alternate;
+    -moz-animation: neon2 1.5s ease-in-out infinite alternate;
+    animation: neon2 1.5s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes neon2 {
+    from {
+      text-shadow: 0 0 15px #fff, 0 0 25px #fff, 0 0 35px #fff, 0 0 45px #26c4ec, 0 0 75px #26c4ec, 0 0 85px #26c4ec, 0 0 105px #26c4ec, 0 0 155px #26c4ec;
+    }
+    to {
+      text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #26c4ec, 0 0 35px #26c4ec, 0 0 40px #26c4ec, 0 0 50px #26c4ec, 0 0 75px #26c4ec;
+    }
+}
+
+.headerD .slide {
+    height: 200px;
+    margin-bottom: auto;
+    margin-top: 50px;
+    width: 600px;
+}
+
+/* Navigation bar style */
+.menuD {
+    height: 90px;
+    margin-bottom: 1%;
+    margin-top: 1%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 95%;
+}
+
+nav {
+    float: right;
+    height: 100%;
+    padding: 0;
+    width: 200px;
+}
+
+.navbar {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.navbar-expand-lg {
+    flex-flow: row-reverse;
+}
+
+/* Responsive */
+.burger{
+    background-color: #26c4ec;
+}
+
+.navbar-light .navbar-nav .active>.nav-link {
+    color: #26c4ec;
+}
+
+.navbar-light .navbar-nav .active>.nav-link:hover {
+    color: black;
+}
+
+.navbar-collapse {
+    background:
+    linear-gradient(27deg, #151515 5px, transparent 5px) 0 5px,
+    linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0px,
+    linear-gradient(27deg, #222 5px, transparent 5px) 0px 10px,
+    linear-gradient(207deg, #222 5px, transparent 5px) 10px 5px,
+    linear-gradient(90deg, #1b1b1b 10px, transparent 10px),
+    linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424);
+    background-color: #131313;
+    background-size: 20px 20px;
+    height: 90px;
+    z-index: 1;
+}
+
+/* Just go for hover and <li> nav style */
+.navbar-expand-lg .navbar-nav .nav-link {
+    padding-right: 45px;
+    padding-left: 45px;
+}
+
+.nav-link {
+    padding-bottom: 26px;
+    padding-top: 26px;
+}
+
+nav li {
+    align-items: center;
+    display: flex;
+    font-family: 'Inconsolata';
+    height: 90px;
+    justify-content: center;
+    text-align: center;
+    text-transform: uppercase;
+    width: 200px;
+}
+
+nav li:hover, nav a:hover {
+    align-items: flex-start;
+    background-color: #D9D9D9;
+    /* text-align: left; */
+    justify-content: flex-start;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+}
+/* Here, this is the end of nav style !! */
+
+/* First section and caroussels*/
+#sectionCarr {
+    margin-bottom: 2%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 97.5%;
+}
+
+.carousel {
+    margin-left: auto;
+    margin-right: auto;
+    width: 97.5%;
+}
+
+.sectionCarrosserie {
+    /* background-color: #354C65; */
+    background:
+    linear-gradient(27deg, #151515 5px, transparent 5px) 0 5px,
+    linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0px,
+    linear-gradient(27deg, #222 5px, transparent 5px) 0px 10px,
+    linear-gradient(207deg, #222 5px, transparent 5px) 10px 5px,
+    linear-gradient(90deg, #1b1b1b 10px, transparent 10px),
+    linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424);
+    background-color: #131313;
+    background-size: 20px 20px;
+    height: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 97.5%;
+}
+
+h3{
+    color: black;
+    margin-bottom: 30px;
+    padding-top: 30px;
+}
+
+.textAff {
+    color: black;
+}
+/* End of first section style */
+
+/* Second section start */
+#sectionDeboss {
+    background:
+    linear-gradient(27deg, #151515 5px, transparent 5px) 0 5px,
+    linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0px,
+    linear-gradient(27deg, #222 5px, transparent 5px) 0px 10px,
+    linear-gradient(207deg, #222 5px, transparent 5px) 10px 5px,
+    linear-gradient(90deg, #1b1b1b 10px, transparent 10px),
+    linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424);
+    background-color: #131313;
+    background-size: 20px 20px;
+    height: 700px;
+    margin-bottom: 2%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 95%;
+}
+
+.h3Sect {
+    color: #26c4ec;
+    font-family: 'Rochester';
+    font-size: 2.3em;
+    font-weight: bold;
+    margin-bottom: 50px;
+    padding-top: 50px;
+}
+
+.textExpli {
+    color: #26c4ec;
+    display: flex;
+    font-family: 'Rochester';
+    justify-content: center;
+    font-size: 1.5em;
+}
+
+#sectionDeboss li {
+    color: #26c4ec;
+    display: flex;
+    font-family: 'Rochester';
+    justify-content: center;
+    font-size: 1.5em;
+}
+/* End of second section style */
+
+/* Start of style for "commentaires" et "gestion" */
+.zoneCommentaire {
+    background-color: black;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    width: 95%;
+}
+
+#logout {
+    display: flex;
+    justify-content: center;
+    margin: 2%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 20%;
+}
+
+.commentaireZone {
+    background-color: black;
+    height: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 95%;
+}
+/* Fin style de la zone commentaire et gestion */
+
+/* Debut style des étoiles pour les notes */
+div.stars {
+    width: 270px;
+    display: inline-block;
+  }
+  
+  input.star { display: none; }
+  
+  label.star {
+    float: right;
+    padding: 10px;
+    font-size: 36px;
+    color: #444;
+    transition: all .2s;
+    margin-bottom: 0;
+  }
+  
+  input.star:checked ~ label.star:before {
+    content: '\f005';
+    color: #FD4;
+    transition: all .25s;
+  }
+  
+  input.star-5:checked ~ label.star:before {
+    color: #FE7;
+    text-shadow: 0 0 20px #952;
+  }
+ 
+  input.star-1:checked ~ label.star:before { color: #F62; }
+
+  label.star:hover { transform: rotate(-15deg) scale(1.3); }
+  
+  label.star:before {
+    content: '\f006';
+    font-family: FontAwesome;
+  }
+
+  .starsFunny {
+      color: white;
+  }
+  
+  /* Star style for vue */
+  label.middleStar {
+    content: '\f005';
+    color: #FD4;
+  }
+
+  label.maxStar {
+    color: #FE7;
+    text-shadow: 0 0 20px #952;
+  }
+
+  label.lowStar { 
+    color: #F62; 
+  }
+  /* End star style vue */
+/* Fin style des étoiles */
+
+/* Style du footer */
+footer {
+    /* background-color: black; */
+    background:
+    linear-gradient(27deg, #151515 5px, transparent 5px) 0 5px,
+    linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0px,
+    linear-gradient(27deg, #222 5px, transparent 5px) 0px 10px,
+    linear-gradient(207deg, #222 5px, transparent 5px) 10px 5px,
+    linear-gradient(90deg, #1b1b1b 10px, transparent 10px),
+    linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424);
+    background-color: #131313;
+    background-size: 20px 20px;
+    height: 104px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 95%;
+}
+
+.zoneFooter {
+    display: flex;
+    justify-content: space-around;
+    padding: 1%;
+}
+
+.zoneFooter a {
+    color: white;
+    text-decoration: none;
+}
+
+.facebook {
+    height: 60px;
+    width: 60px;
+}
+
+.map {
+    height: 60px;
+    width: 60px;
+}
+
+.twitter {
+    height: 60px;
+    width: 60px;
+}
+
+.mentions {
+    height: 60px;
+    width: 60px;
+}
+/* Fin style du footer */
+
+/* Style du formulaire */
+.formFond {
+    background:
+    linear-gradient(27deg, #151515 5px, transparent 5px) 0 5px,
+    linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0px,
+    linear-gradient(27deg, #222 5px, transparent 5px) 0px 10px,
+    linear-gradient(207deg, #222 5px, transparent 5px) 10px 5px,
+    linear-gradient(90deg, #1b1b1b 10px, transparent 10px),
+    linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424);
+    background-color: #131313;
+    background-size: 20px 20px;
+    height: auto;
+    margin-right: auto;
+    margin-left: auto;
+    width: 95%;
+}
+
+.h1Form {
+    color: white;
+    margin-bottom: 50px;
+    padding-top: 50px;
+}
+
+form {
+    margin-bottom: 2%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 2%;
+    width: 95%;
+}
+
+label {
+    color: white;
+}
+
+label:hover {
+    color: #26c4ec;
+}
+
+input:hover {
+    background-color: rgb(219, 213, 213);
+}
+
+.form-control:hover::placeholder {
+    color: #26c4ec;
+}
+
+textarea:hover{
+    background-color: rgb(219, 213, 213);
+}
+
+textarea:hover::placeholder {
+    color: #26c4ec;
+}
+
+.col-sm-6 {
+    display: flex;
+    flex-direction: column;
+}
+
+.subForm {
+    margin-top: 15px;
+}
+
+/* Style de l'input number */
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+/* Chrome */
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button { 
+	-webkit-appearance: none;
+	margin:0;
+}
+
+/* Opéra*/
+input::-o-inner-spin-button,
+input::-o-outer-spin-button { 
+	-o-appearance: none;
+	margin:0
+}
+
+/* Version mobile */
+@media screen and (max-width: 750px) {
+    header {
+        display: flex;
+        flex-direction: column;
+        width: 95%
+    }
+
+    .headerD {
+        height: 50%;
+    }
+
+    .headerD .slide {
+        margin-bottom: auto;
+        margin-top: 4%;
+        width: 100%;
+    }
+
+    .headerG {
+        height: 50%;
+        width: 100%;
+    }
+
+    .headerG h1 {
+        font-size: 2em;
+        margin-left: auto;
+        margin-right: auto;
+        width: 95%;
+    }
+
+    .text-incline {
+        font-size: 1.6em;
+    }
+    
+    .headerG img {
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 2%;
+        width: 95%;
+    }
+
+    nav {
+        float: initial;
+    }
+
+    .navbar-expand-lg {
+        flex-flow: initial;
+        margin: 0;
+        width: 55.2%;
+    }
+    
+    .menuD {
+        height: auto;
+    }
+
+    .navbar {
+        margin: 0;
+    }
+
+    .navbar-nav {
+        margin-right: auto;
+        width: auto;
+    }
+
+    .navbar-collapse {
+        height: auto;
+        margin: 0;
+        padding-left: 0;
+    }
+
+    .textAff p {
+        font-size: 0.8em;
+        width: auto;
+    }
+
+    #sectionDeboss {
+        height: 800px;
+    }
+
+    .decriCarr {
+        width: 100%;
+    }
+
+    .textExpli {
+        flex-direction: column;
+        font-size: 0.8em;
+        text-align: center;
+    }
+    
+    li {
+        font-size: 0.8em;
+        text-align: center;
+    }
+
+    .zoneFooter {
+        padding-top: 10%;
+    }
+
+    .facebook {
+        height: 30px;
+        width: 30px;
+    }
+    
+    .map {
+        height: 30px;
+        width: 30px;
+    }
+    
+    .twitter {
+        height: 30px;
+        width: 30px;
+    }
+    
+    .mentions {
+        height: 30px;
+        width: 30px;
+    }
+}
