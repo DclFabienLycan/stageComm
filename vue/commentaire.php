@@ -113,10 +113,10 @@
     </main>
     <footer>
         <div class="zoneFooter">
-            <a href="" title="" target="_blank"><img src="../css/img/FB2icon.svg" alt="facebook" class="facebook"></a>
-            <a href="" title="" target="_blank"><img src="../css/img/twitter2.svg" alt="twitter" class="twitter"></a>
-            <a href=""><img src="../css/img/mentionsL2.svg" alt="mentionsLegales" class="mentions"></a>
-            <a href=""><img src="../css/img/map2.svg" alt="localisation" class="map"></a>
+            <a href="" title="" target="_blank"><img src="../css/img/FBicon.svg" alt="facebook" class="facebook"></a>
+            <a href="" title="" target="_blank"><img src="../css/img/twitter.svg" alt="twitter" class="twitter"></a>
+            <a href=""><img src="../css/img/mentionsL.svg" alt="mentionsLegales" class="mentions"></a>
+            <a href=""><img src="../css/img/map.svg" alt="localisation" class="map"></a>
         </div>
     </footer>
     
