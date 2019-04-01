@@ -40,3 +40,4 @@ if (isset($_POST['login']))
         $creationUtilisateur->execute();
     }
 }
+

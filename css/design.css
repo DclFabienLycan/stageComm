@@ -276,6 +276,10 @@ h3{
 }
 /* End of second section style */
 
+strong {
+    font-weight: normal;
+}
+
 /* Start of style for "commentaires" et "gestion" */
 .zoneCommentaire {
     background-color: black;

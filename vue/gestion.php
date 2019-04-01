@@ -139,10 +139,12 @@
                 <?php 
                     $resultat = $pdo->query("SELECT * FROM commentaires NATURAL JOIN utilisateurs WHERE statuts = '0'");
                     $selectResult = $resultat->fetchAll();
+                    $i=0;
 
-                    foreach ($selectResult as $selectResults) { ?>
+                    foreach ($selectResult as $selectResults) { 
+                        $i++;  ?>
                         <form action="" method="POST">
-                        <div class="container formulaire">
+                        <div class="container formulaire<?= $i ?>">
                             <div class="form-row">
                                 <div class="col-sm-3 offset-md-3">
                                     <label for="" class="col-form-label">Nom :</label>
@@ -205,12 +207,21 @@
                                     <textarea name="messCommentaire" id="textMess" cols="30" rows="10" maxlength="500" placeholder=" Votre message ici ..." required><?php echo $selectResults->contenuCommentaire; ?></textarea>
                                 </div>
                             </div>
-                            <button type="submit" name="update" id="sub" class="btn btn-outline-info offset-md-3 mt-2">Mettre à jour</button>
+                            <button type="submit" name="update<?= $i ?>" id="sub" class="btn btn-outline-info offset-md-3 mt-2">Mettre à jour</button>
                         </div>
                     </form>
-                <?php } ?>
+                    <?php 
+                        if(isset($_POST['update'.$i])) {
+
+                            if(!empty($_POST['nom']) and !empty($_POST['prenom'])  and !empty($_POST['messCommentaire'])) {
+                                $update = $pdo->query("UPDATE commentaires SET statuts='1' WHERE statuts = '0'");
+                                // $update->fetch();
+                            }
+                        }
+                        echo $_POST['update'.$i];
+                    } ?>
             </section>
-        <?php    
+        <?php 
             } ?>
     </main>
     <footer>
@@ -229,12 +240,3 @@
 </body>
 </html>
 
-<?php 
-
-if(isset($_POST['update'])) {
-
-    if(!empty($_POST['nom']) and !empty($_POST['prenom'])  and !empty($_POST['messCommentaire'])) {
-        $update = $pdo->query("UPDATE commentaires SET statuts='1' WHERE statuts = '0'");
-        // $update->fetch();
-    }
-}
