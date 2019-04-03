@@ -140,9 +140,12 @@
                     $resultat = $pdo->query("SELECT * FROM commentaires NATURAL JOIN utilisateurs WHERE statuts = '0'");
                     $selectResult = $resultat->fetchAll();
                     $i=0;
-
+                    
                     foreach ($selectResult as $selectResults) { 
-                        $i++;  ?>
+                        $i++; 
+                        $namePost = '"update'.$i.'"';
+                        var_dump($namePost);
+                         ?>
                         <form action="" method="POST">
                         <div class="container formulaire<?= $i ?>">
                             <div class="form-row">
@@ -160,44 +163,20 @@
                                     <span class="starsFunny">Veuillez noter :</span>
                                     <div class="stars">
                                     <?php 
-                                        $star = $selectResults->noteCommentaire;
-
-                                        if ($star == 5) {
-                                            echo '<input class="star star-5 maxStar" type="radio" name="star"/>';
-                                            echo '<label class="star star-5 maxStar" for="star-5"></label>';
-                                            echo '<input class="star star-5 maxStar" type="radio" name="star"/>';
-                                            echo '<label class="star star-5 maxStar" for="star-5"></label>';
-                                            echo '<input class="star star-5 maxStar" type="radio" name="star"/>';
-                                            echo '<label class="star star-5 maxStar" for="star-5"></label>';
-                                            echo '<input class="star star-5 maxStar" type="radio" name="star"/>';
-                                            echo '<label class="star star-5 maxStar" for="star-5"></label>';
-                                            echo '<input class="star star-5 maxStar" type="radio" name="star"/>';
-                                            echo '<label class="star star-5 maxStar" for="star-5"></label>'; 
-                                        } else if ($star == 4) {
-                                            echo '<input class="star star-4 middleStar" type="radio" name="star"/>';
-                                            echo '<label class="star star-4 middleStar" for="star-4"></label>';
-                                            echo '<input class="star star-4 middleStar" type="radio" name="star"/>';
-                                            echo '<label class="star star-4 middleStar" for="star-4"></label>';
-                                            echo '<input class="star star-4 middleStar" type="radio" name="star"/>';
-                                            echo '<label class="star star-4 middleStar" for="star-4"></label>';
-                                            echo '<input class="star star-4 middleStarr" type="radio" name="star"/>';
-                                            echo '<label class="star star-4 middleStar" for="star-4"></label>';
-                                        } else if ($star == 3) {
-                                            echo '<input class="star star-3 middleStar" type="radio" name="star"/>';
-                                            echo '<label class="star star-3 middleStar" for="star-3"></label>';
-                                            echo '<input class="star star-3 middleStar" type="radio" name="star"/>';
-                                            echo '<label class="star star-3 middleStar" for="star-3"></label>';
-                                            echo '<input class="star star-3 middleStar" type="radio" name="star"/>';
-                                            echo '<label class="star star-3 middleStar" for="star-3"></label>';
-                                        } else if ($star == 2) {
-                                            echo '<input class="star star-2 middleStar" type="radio" name="star"/>';
-                                            echo '<label class="star star-2 middleStar" for="star-2"></label>';
-                                            echo '<input class="star star-2 middleStar" type="radio" name="star"/>';
-                                            echo '<label class="star star-2 middleStar" for="star-2"></label>';
-                                        } else {
-                                            echo '<input class="star star-1 lowStar" type="radio" name="star"/>';
-                                            echo '<label class="star star-1 lowStar" for="star-1"></label>';
-                                        } ?>
+                                        $nombreEtoile = $selectResults->noteCommentaire;
+                                        
+                                        for($j=1; $j<=$nombreEtoile; $j++) {
+                                            if ($nombreEtoile == 1) {
+                                                $colorClass = 'lowStar';
+                                            } elseif ($nombreEtoile >= 2 && $nombreEtoile <= 4) {
+                                                $colorClass = 'middleStar';
+                                            } elseif ($nombreEtoile == 5) {
+                                                $colorClass = 'maxStar';
+                                            }
+                                                echo ('<input class="star star-'. $nombreEtoile .' '. $colorClass.'" type="radio" name="star"/>');
+                                                echo ('<label class="star star-'. $nombreEtoile .' '. $colorClass.'" for="star-'. $nombreEtoile . '"></label>');
+                                        }
+                                    ?>
                                     </div>
                                 </div>
                             </div>
@@ -207,22 +186,29 @@
                                     <textarea name="messCommentaire" id="textMess" cols="30" rows="10" maxlength="500" placeholder=" Votre message ici ..." required><?php echo $selectResults->contenuCommentaire; ?></textarea>
                                 </div>
                             </div>
-                            <button type="submit" name="update<?= $i ?>" id="sub" class="btn btn-outline-info offset-md-3 mt-2">Mettre à jour</button>
+                            <button type="submit" name=<?= $namePost ?> id="sub" class="btn btn-outline-info offset-md-3 mt-2">Mettre à jour</button>
                         </div>
                     </form>
                     <?php 
-                        if(isset($_POST['update'.$i])) {
-
+                       if(isset($_POST[$namePost])) {
+                            error_log('ça passe ici !');
+                    
                             if(!empty($_POST['nom']) and !empty($_POST['prenom'])  and !empty($_POST['messCommentaire'])) {
-                                $update = $pdo->query("UPDATE commentaires SET statuts='1' WHERE statuts = '0'");
+                                $sql = "UPDATE commentaires SET statuts = '1' WHERE statuts = 0";
+                                $update = $pdo->prepare($sql);
+                                $update->execute();
+                                if(!$update->execute()) {error_log( $update->error );}
                                 // $update->fetch();
                             }
-                        }
-                        echo $_POST['update'.$i];
+                        }  else {
+                            error_log ( 'je t\'emmerde et je passe là !');
+                          }
                     } ?>
             </section>
         <?php 
-            } ?>
+        // <?php
+     
+        } ?>
     </main>
     <footer>
         <div class="zoneFooter">
