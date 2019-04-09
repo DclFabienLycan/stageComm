@@ -1,3 +1,7 @@
+<?php
+require '../php/modele/pdo.php';
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -15,14 +19,14 @@
     <title>My DSP</title>
 </head>
 <body>
-    <!-- Header avec menu navigation -->
     <header>
         <div class="headerG">
-            <h1 class="dsp">MY DSP</h1>
+            <h1 class="dsp">My DSP</h1>
             <div class="textHeader">
                 <p class="text-incline">Débosselage Sans Peinture</p>
                 <hr class="barre">
             </div>
+            <p id="interv">Intervention chez professionnel et particulier</p>
         </div>
         <div class="headerD">
             <div id="carouselExampleSlidesOnly" class="slide" data-ride="carousel">
@@ -48,7 +52,7 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo01">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="../index.html">Accueil</a>  <!-- Icone pour l'accueil à mettre -->
+                        <a class="nav-link" href="../index.html">Accueil</a>
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link" href="gestion.php">Gestion</a>
@@ -67,9 +71,53 @@
         </nav>
     </div>
     <main>
+        <section class="affichageCommentaire mb-4 pt-4 pb-4">
+            <div class="appelAffichage mb-4 pt-4">
+                <?php
+                    $resultat = $pdo->query("SELECT * FROM commentaires NATURAL JOIN utilisateurs WHERE statuts = '1'");
+                    $selectResult = $resultat->fetchAll();
+                    $i=0;
+                // Pour chaque commentaire avec le statuts '1', les affichers
+                foreach ($selectResult as $selectResults) { 
+                    $i++; 
+                    $id = $selectResults->idCommentaire;
+                ?>
+                <div class="container affiComm">
+                    <h3 class="text-center titreComm">Commentaire :</h3>
+                    <div class="row zoneRow">
+                        <div class="col-sm-6 textAffi offset-md-3">
+                        <?php
+                        $nombreEtoile = $selectResults->noteCommentaire;
+                                    
+                        // Boucle pour l'affichage des étoiles
+                        for($j=1; $j<=$nombreEtoile; $j++) {
+                            if ($nombreEtoile == 1) {
+                                $colorClass = 'lowStar';
+                            } elseif ($nombreEtoile >= 2 && $nombreEtoile <= 4) {
+                                $colorClass = 'middleStar';
+                            } elseif ($nombreEtoile == 5) {
+                                $colorClass = 'maxStar';
+                            }
+                                echo ('<input class="star star-'. $nombreEtoile .' '. $colorClass.'" type="radio" name="star"/>');
+                                echo ('<label class="star star-'. $nombreEtoile .' '. $colorClass.'" for="star-'. $nombreEtoile . '"></label>');
+                        }
+                        ?>
+                        </div>
+                    </div>
+                    <div class="row zoneRow">
+                        <div class="col-sm-3 textAffi offset-md-3"><?= $selectResults->nomUtilisateur ?></div>
+                        <div class="col-sm-3 textAffi"><?= $selectResults->prenomUtilisateur ?></div>
+                    </div>
+                    <div class="row zoneRow">
+                        <div class="col-sm-6 mb-4 textAffi offset-md-3"><?= $selectResults->contenuCommentaire ?></div>
+                    </div>
+                </div>
+                <?php } ?>    
+            </div>
+        </section>
        <section class="commentaireZone mb-4 pt-4">
             <form action="" method="POST">
-                <div class="container formulaire">
+                <div class="container formulaireComm">
                     <div class="form-row">
                         <div class="col-sm-3 offset-md-3">
                             <label for="" class="col-form-label">Nom :</label>
@@ -107,9 +155,6 @@
                 </div>
             </form>
        </section>
-       <section class="affichageComentaire mb-4 pt-4">
-
-       </section>
     </main>
     <footer>
         <div class="zoneFooter">
@@ -123,7 +168,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script src="js/script.js"></script>
+    <script src="../js/script.js"></script>
 </body>
 </html>
 
@@ -131,7 +176,7 @@
 
 require '../php/modele/pdo.php';
 
-// ici les commentaires seront affiché, et possibilité d'en ajouter un via formulaire
+// L' ajout de commentaire dans la bdd via formulaire
 
 if (isset($_POST['submit'])) {
 
@@ -149,7 +194,6 @@ if (isset($_POST['submit'])) {
         $commentaire->bindParam(':note', $_POST['star']);
         $commentaire->bindParam(':id', $id);
         $commentaire->execute();
-        var_dump($commentaire);
 
     }
 }

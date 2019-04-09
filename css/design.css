@@ -1,10 +1,10 @@
-/* Put out m and p from the html */
+/* Mise à 0 des margins et paddings */
 * {
     margin: 0;
     padding: 0;
 }
 
-/* Just because need little font */
+/* Font pour le texte incliné */
 @font-face {
     font-family: "LoudAndClear";
     src: url(font/Loud-and-clear.ttf);
@@ -12,7 +12,17 @@
     font-weight: normal;
 }
 
-/* HTML and body style */
+@font-face {
+    font-family: 'BilkoOpti-Regular';
+    src:url('BilkoOpti-Regular.ttf.woff') format('woff'),
+        url('BilkoOpti-Regular.ttf.svg#BilkoOpti-Regular') format('svg'),
+        url('BilkoOpti-Regular.ttf.eot'),
+        url('BilkoOpti-Regular.ttf.eot?#iefix') format('embedded-opentype'); 
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Style du HTML et du body */
 html {
     background-color: white;
 }
@@ -23,7 +33,7 @@ body {
     width: 100%;
 }
 
-/* Formatting header */
+/* Mise en forme du header */
 header {
     /* Fond carbone */
     background:
@@ -53,8 +63,9 @@ header {
 
 .headerG h1 {
     color: #26c4ec;
-    font-weight: bold;
+    font-family: 'BilkoOpti-Regular';
     font-size: 4em;
+    font-weight: bold;
     letter-spacing: 0.2em;
     margin-left: 3%;
     margin-top: 5%;
@@ -103,6 +114,12 @@ header {
     }
 }
 
+#interv {
+    color: white;
+    margin-left: 1%;
+    margin-top: auto;
+}
+
 .headerD .slide {
     height: 200px;
     margin-bottom: auto;
@@ -110,7 +127,7 @@ header {
     width: 600px;
 }
 
-/* Navigation bar style */
+/* Style bar de navigation */
 .menuD {
     height: 90px;
     margin-bottom: 1%;
@@ -136,13 +153,15 @@ nav {
     flex-flow: row-reverse;
 }
 
-/* Responsive */
+/* Responsive, menu burger */
 .burger{
     background-color: #26c4ec;
 }
 
 .navbar-light .navbar-nav .active>.nav-link {
-    color: #26c4ec;
+    color: white;
+    height: 100%;
+    width: 100%;
 }
 
 .navbar-light .navbar-nav .active>.nav-link:hover {
@@ -155,15 +174,15 @@ nav {
     z-index: 1;
 }
 
-/* Just go for hover and <li> nav style */
+/* Style nav link et li */
 .navbar-expand-lg .navbar-nav .nav-link {
     padding-right: 45px;
     padding-left: 45px;
 }
 
 .nav-link {
-    padding-bottom: 26px;
-    padding-top: 26px;
+    padding-bottom: auto;
+    padding-top: 30px;
 }
 
 nav li {
@@ -178,19 +197,20 @@ nav li {
 }
 
 nav li:hover, nav a:hover {
-    align-items: flex-start;
-    background-color: #D9D9D9;
-    /* text-align: left; */
-    justify-content: flex-start;
+    /* align-items: flex-start; */
+    background-color: #26c4ec;
+    font-size: 1.2em;
+    font-weight: bold;
+    /* justify-content: flex-start; */
 }
 
 nav a {
     color: white;
     text-decoration: none;
 }
-/* Here, this is the end of nav style !! */
+/* Ici, fin du style de la nav */
 
-/* First section and caroussels*/
+/* Première section et carousel */
 #sectionCarr {
     margin-bottom: 2%;
     margin-left: auto;
@@ -205,7 +225,6 @@ nav a {
 }
 
 .sectionCarrosserie {
-    /* background-color: #354C65; */
     background:
     linear-gradient(27deg, #151515 5px, transparent 5px) 0 5px,
     linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0px,
@@ -230,9 +249,9 @@ h3{
 .textAff {
     color: black;
 }
-/* End of first section style */
+/* Fin du style première Section */
 
-/* Second section start */
+/* Debut du style second Section */
 #sectionDeboss {
     background:
     linear-gradient(27deg, #151515 5px, transparent 5px) 0 5px,
@@ -243,11 +262,27 @@ h3{
     linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424);
     background-color: #131313;
     background-size: 20px 20px;
-    height: 700px;
+    height: auto;
     margin-bottom: 2%;
     margin-left: auto;
     margin-right: auto;
+    padding-bottom: 3%;
+    padding-top: 2%;
     width: 95%;
+}
+
+.textPrix {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 2%;
+    margin-left: 5%;
+}
+
+#textCount {
+    height: auto;
+    margin-left: 1%;
+    width: 400px;
 }
 
 .h3Sect {
@@ -274,13 +309,17 @@ h3{
     justify-content: center;
     font-size: 1.5em;
 }
-/* End of second section style */
+/* Fin du style second Section */
 
 strong {
     font-weight: normal;
 }
 
-/* Start of style for "commentaires" et "gestion" */
+em {
+    font-style: normal;
+}
+
+/* Début du style page "commentaire" et "gestion" */
 .zoneCommentaire {
     background-color: black;
     height: auto;
@@ -299,11 +338,73 @@ strong {
 }
 
 .commentaireZone {
-    background-color: black;
+    background:
+    linear-gradient(27deg, #151515 5px, transparent 5px) 0 5px,
+    linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0px,
+    linear-gradient(27deg, #222 5px, transparent 5px) 0px 10px,
+    linear-gradient(207deg, #222 5px, transparent 5px) 10px 5px,
+    linear-gradient(90deg, #1b1b1b 10px, transparent 10px),
+    linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424);
+    background-color: #131313;
+    background-size: 20px 20px;
     height: 600px;
     margin-left: auto;
     margin-right: auto;
     width: 95%;
+}
+
+.formulaireComm {
+    background-color: rgba(0, 0, 0, 0.900);
+    border: 3px solid white;
+    padding-bottom: 1%;
+}
+
+#comm {
+    color: white;
+}
+
+.affichageCommentaire {
+    background-color: #303030;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    width: 95%;
+}
+
+.titreComm {
+    color: #26c4ec;
+}
+
+.zoneRow {
+    padding-bottom: 2%;
+}
+
+.zoneRow .col-sm-6 {
+    display: flex;
+    flex-direction: row;
+}
+
+.affiComm {
+    background-color: #4e4c4c;
+    border: 3px solid white;
+    height: auto;
+    margin-bottom: 1%;
+}
+
+.textAffi {
+    background-color: #303030;
+    display: flex;
+    border: 3px solid white;
+    /* border-radius: 50%; */
+    color: #26c4ec;
+    font-size: 1.3em;
+    justify-content: center;
+    text-align: center;
+}
+
+.textAffi input.star ~ label.star:hover {
+    color: #FE7;
+    transform: none;
 }
 /* Fin style de la zone commentaire et gestion */
 
@@ -348,7 +449,7 @@ div.stars {
       color: white;
   }
 
-  /* Star style for vue */
+  /* Style des étoiles pour la vue */
   label.middleStar {
     content: '\f005';
     color: #FD4;
@@ -362,8 +463,21 @@ div.stars {
   label.lowStar { 
     color: #F62; 
   }
-  /* End star style vue */
+  /* Fin style étoile vue */
 /* Fin style des étoiles */
+
+/* Style de la page A Propos */
+.textPropos {
+    background-color: rgba(0, 0, 0, 0.900);
+    margin-bottom: 2%;
+    padding: 2%;
+    width: 30%;
+}
+
+.textPropos p {
+    color: #26c4ec;
+}
+/* Fin de style page A Propos */
 
 /* Style du footer */
 footer {
@@ -408,15 +522,7 @@ footer {
 
 /* Style du formulaire */
 .formFond {
-    background:
-    linear-gradient(27deg, #151515 5px, transparent 5px) 0 5px,
-    linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0px,
-    linear-gradient(27deg, #222 5px, transparent 5px) 0px 10px,
-    linear-gradient(207deg, #222 5px, transparent 5px) 10px 5px,
-    linear-gradient(90deg, #1b1b1b 10px, transparent 10px),
-    linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424);
-    background-color: #131313;
-    background-size: 20px 20px;
+    background:black;
     height: auto;
     margin-right: auto;
     margin-left: auto;
@@ -489,6 +595,7 @@ input::-o-outer-spin-button {
 	-o-appearance: none;
 	margin:0
 }
+/* Fin style formulaire */
 
 /* Version mobile */
 @media screen and (max-width: 750px) {
@@ -499,17 +606,11 @@ input::-o-outer-spin-button {
     }
 
     .headerD {
-        height: 50%;
-    }
-
-    .headerD .slide {
-        margin-bottom: auto;
-        margin-top: 4%;
-        width: 100%;
+        display: none;
     }
 
     .headerG {
-        height: 50%;
+        height: 100%;
         width: 100%;
     }
 
@@ -522,6 +623,13 @@ input::-o-outer-spin-button {
 
     .text-incline {
         font-size: 1.6em;
+        margin-bottom: auto;
+        margin-left: 0;
+        margin-top: 15%;
+    }
+
+    .barre {
+        display: none;
     }
     
     .headerG img {
@@ -529,6 +637,18 @@ input::-o-outer-spin-button {
         margin-right: auto;
         margin-top: 2%;
         width: 95%;
+    }
+
+    #interv {
+        margin-top: auto;
+    }
+
+    .textPrix {
+        flex-direction: column-reverse;
+    }
+
+    #textCount {
+        width: 300px;
     }
 
     nav {
@@ -566,7 +686,11 @@ input::-o-outer-spin-button {
     }
 
     #sectionDeboss {
-        height: 800px;
+        height: auto;
+    }
+
+    .h3Sect {
+        padding: 0;
     }
 
     .decriCarr {
@@ -575,11 +699,13 @@ input::-o-outer-spin-button {
 
     .textExpli {
         flex-direction: column;
-        font-size: 0.8em;
+        font-size: 1.2em;
+        padding-left: 1%;
+        padding-right: 1%;
         text-align: center;
     }
     
-    li {
+    ul {
         font-size: 0.8em;
         text-align: center;
     }

@@ -26,14 +26,3 @@
 // }
 
 // affiche();
-
-// Ici faut s'amuser à faire de l'Ajax !! et pas pour laver les carreaux !!!
-
-let httpRequest = new XMLHttpRequest();
-    httpRequest.onreadystatechange = function(argument) {
-        if (httpRequest.readyState === 4) {
-            
-        }
-    }
-    httpRequest.open('GET', '../', true);
-    httpRequest.send();
