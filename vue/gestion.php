@@ -1,8 +1,12 @@
 <?php
+
+// On démarre une session si aucune n'est présente
 if(session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-require '../php/modele/pdo.php';
+
+// Appel de la BDD
+require '../modele/pdo.php';
 ?>
 
 <!DOCTYPE html>
@@ -23,31 +27,10 @@ require '../php/modele/pdo.php';
     <title>My DSP</title>
 </head>
 <body>
-    <header>
-        <div class="headerG">
-            <h1 class="dsp">My DSP</h1>
-            <div class="textHeader">
-                <p class="text-incline">Débosselage Sans Peinture</p>
-                <hr class="barre">
-            </div>
-            <p id="interv">Intervention chez professionnel et particulier</p>
-        </div>
-        <div class="headerD">
-            <div id="carouselExampleSlidesOnly" class="slide" data-ride="carousel">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="https://via.placeholder.com/700x200" class="d-block w-100" alt="...">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="https://via.placeholder.com/700x200" class="d-block w-100" alt="...">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="https://via.placeholder.com/700x200" class="d-block w-100" alt="...">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
+<?php 
+    include '../include/header.php'; 
+?>    
+    <!-- Menu de Navigation bootstrap -->
     <div class="menuD">
         <nav class="navbar navbar-expand-lg navbar-light">
             <button class="navbar-toggler burger" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
@@ -56,7 +39,7 @@ require '../php/modele/pdo.php';
             <div class="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo01">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="../index.html">Accueil</a>
+                        <a class="nav-link" href="../index.php">Accueil</a>
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link" href="gestion.php">Gestion</a>
@@ -65,27 +48,28 @@ require '../php/modele/pdo.php';
                         <a class="nav-link" href="commentaire.php">Commentaire</a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="apropos.html" >a propos</a>
+                        <a class="nav-link" href="apropos.php" >a propos</a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="../php/contactForm.php">Contact</a>
+                        <a class="nav-link" href="contactForm.php">Contact</a>
                     </li>
                 </ul>
             </div>
         </nav>
     </div>
     <main>
+        <!-- Partie de connexion admin -->
         <div class="container">
             <h2 class="text-center">Connexion Administrateur</h2>
             <div class="card bg-dark mt-4 pt-3">
             <?php 
             // Si une session est active, changement du menu
             if (isset($_SESSION['auth'])){  ?>
-                <a class="btn btn-outline-info" name="logout" id="logout" href="logout.php" role="button">Se déconnecter</a>
+                <a class="btn btn-outline-info" name="logout" id="logout" href="../controller/logout.php" role="button">Se déconnecter</a>
                 <?php
                 // Sinon, on active le menu de connexion
             } else { ?>
-                <form action="login.php" method="POST">
+                <form action="../controller/login.php" method="POST">
                     <div class="container formulaire">
                         <div class="form-row">
                             <div class="col-sm-3 offset-md-2">
@@ -122,7 +106,7 @@ require '../php/modele/pdo.php';
                     ?>
                     
                     <h3 id="comm" class="text-center">Commentaire n°<?= $id ?></h3>
-                    <form action="traitement.php" method="POST" enctype="multipart/form-data" class="myForm">
+                    <form action="../controller/traitement.php" method="POST" enctype="multipart/form-data" class="myForm">
                     <div class="container formulaire<?= $i ?>">
                         <div class="form-row">
                             <div class="col-sm-3 offset-md-3">
@@ -164,14 +148,16 @@ require '../php/modele/pdo.php';
                             </div>
                         </div>
                         <button type="submit" name="update" class="btn btn-outline-info offset-md-3 mt-2 sub">Mettre à jour</button>
+                        <button type="submit" name="delete" class="btn btn-danger offset-md-3 mt-2 sub">Supprimer</button>
                     </div>
                     </form>
                 <?php 
             } ?>
             <div id="affichageText">
                 <?php 
+                // To fix : Ajax, pour l'affichage de la div
                 if(isset($_POST['update'])) {
-                    echo 'Mise à jour bien effectuée';
+                    echo '<div class="alert alert-success text-center mt-4" role="alert">Mise à jour bien effectuée</div>';
                 }
                 ?>
             </div>

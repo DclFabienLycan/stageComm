@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le :  jeu. 28 mars 2019 à 15:31
+-- Généré le :  mer. 17 avr. 2019 à 07:44
 -- Version du serveur :  5.7.24
 -- Version de PHP :  7.2.11
 
@@ -33,6 +33,7 @@ CREATE TABLE `commentaires` (
   `contenuCommentaire` longtext NOT NULL,
   `noteCommentaire` varchar(10) NOT NULL,
   `statuts` tinyint(1) NOT NULL,
+  `dateCommentaire` datetime DEFAULT NULL,
   `idUtilisateur` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -40,10 +41,12 @@ CREATE TABLE `commentaires` (
 -- Déchargement des données de la table `commentaires`
 --
 
-INSERT INTO `commentaires` (`idCommentaire`, `contenuCommentaire`, `noteCommentaire`, `statuts`, `idUtilisateur`) VALUES
-(1, 'Ton site est trop bien fait !', '5', 0, 1),
-(3, 'encore un test', '3', 0, 4),
-(4, 'Petit messsage test', '5', 0, 5);
+INSERT INTO `commentaires` (`idCommentaire`, `contenuCommentaire`, `noteCommentaire`, `statuts`, `dateCommentaire`, `idUtilisateur`) VALUES
+(4, 'Petit messsage test', '5', 0, NULL, 5),
+(5, 'Ceci est un long message de test, pour voir si mes div s\'agrandissent bien, car il faut bien vérifier ça également. Sinon, je pense que ça avance, on verra bien avec la mise en ligne comme ça passe, surtout pour le responsive !!', '4', 0, NULL, 6),
+(6, 'Je ne suis pas satisfait du résultat', '1', 1, '2019-04-10 13:53:26', 8),
+(7, 'J\'aime toujours autant les messages de test !!', '3', 1, '2019-04-10 14:35:01', 9),
+(8, 'petit message test', '3', 1, '2019-04-15 09:41:30', 10);
 
 -- --------------------------------------------------------
 
@@ -59,6 +62,14 @@ CREATE TABLE `formulaire` (
   `mailContact` varchar(255) NOT NULL,
   `messageContact` longtext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `formulaire`
+--
+
+INSERT INTO `formulaire` (`idFormulaire`, `nomContact`, `prenomContact`, `numeroTelContact`, `mailContact`, `messageContact`) VALUES
+(1, 'Dupond', 'Jacques', '0245893621', 'dupond.jacques@email.fr', 'test'),
+(2, 'Dupond', 'Jacques', '0245893621', 'toto@jenesaispas.fr', 'encore un test');
 
 -- --------------------------------------------------------
 
@@ -102,7 +113,12 @@ INSERT INTO `utilisateurs` (`idUtilisateur`, `nomUtilisateur`, `prenomUtilisateu
 (2, 'toto', 'Lycan', '$2y$10$hySyMih9JZeS3JDbPS9FbeIVexxxfvry3ivn/vUqu25Ta0plIJCbK', 1),
 (3, 'Beau', 'Lycan', NULL, 2),
 (4, 'Frakkass', 'huguette', NULL, 2),
-(5, 'Toto', 'Tony', NULL, 2);
+(5, 'Toto', 'Tony', NULL, 2),
+(6, 'Dupond', 'Jean', NULL, 2),
+(7, 'Pierre', 'Paul', NULL, 2),
+(8, 'Pierre', 'Paul', NULL, 2),
+(9, 'Lacoule', 'Douce', NULL, 2),
+(10, 'tata', 'huguette', NULL, 2);
 
 --
 -- Index pour les tables déchargées
@@ -142,13 +158,13 @@ ALTER TABLE `utilisateurs`
 -- AUTO_INCREMENT pour la table `commentaires`
 --
 ALTER TABLE `commentaires`
-  MODIFY `idCommentaire` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idCommentaire` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT pour la table `formulaire`
 --
 ALTER TABLE `formulaire`
-  MODIFY `idFormulaire` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idFormulaire` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT pour la table `role`
@@ -160,7 +176,7 @@ ALTER TABLE `role`
 -- AUTO_INCREMENT pour la table `utilisateurs`
 --
 ALTER TABLE `utilisateurs`
-  MODIFY `idUtilisateur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `idUtilisateur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Contraintes pour les tables déchargées

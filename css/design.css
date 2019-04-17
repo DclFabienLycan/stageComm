@@ -12,6 +12,7 @@
     font-weight: normal;
 }
 
+/* Font du H1 */
 @font-face {
     font-family: 'BilkoOpti-Regular';
     src:url('BilkoOpti-Regular.ttf.woff') format('woff'),
@@ -126,6 +127,7 @@ header {
     margin-top: 50px;
     width: 600px;
 }
+/* Fin style header */
 
 /* Style bar de navigation */
 .menuD {
@@ -205,7 +207,7 @@ nav li:hover, nav a:hover {
 }
 
 nav a {
-    color: white;
+    color: #ffffff;
     text-decoration: none;
 }
 /* Ici, fin du style de la nav */
@@ -218,10 +220,18 @@ nav a {
     width: 97.5%;
 }
 
+/* .carouselPhoto {
+    display: flex;
+    flex-direction: row;
+} */
+
 .carousel {
+    border: 10px solid black;
+    box-shadow: 4px 10px 8px black;
+    height: auto;
     margin-left: auto;
     margin-right: auto;
-    width: 97.5%;
+    width: 47%;
 }
 
 .sectionCarrosserie {
@@ -241,7 +251,7 @@ nav a {
 }
 
 h3{
-    color: black;
+    color: #000000;
     margin-bottom: 30px;
     padding-top: 30px;
 }
@@ -311,6 +321,7 @@ h3{
 }
 /* Fin du style second Section */
 
+/* Style des balises em et strong pour SEO */
 strong {
     font-weight: normal;
 }
@@ -318,6 +329,7 @@ strong {
 em {
     font-style: normal;
 }
+/* Fin style des balises pour SEO */
 
 /* Début du style page "commentaire" et "gestion" */
 .zoneCommentaire {
@@ -469,6 +481,7 @@ div.stars {
 /* Style de la page A Propos */
 .textPropos {
     background-color: rgba(0, 0, 0, 0.900);
+    font-size: 1.4em;
     margin-bottom: 2%;
     padding: 2%;
     width: 30%;
@@ -597,8 +610,47 @@ input::-o-outer-spin-button {
 }
 /* Fin style formulaire */
 
+/* Style pour le cookie */
+.cookie-alert {
+    position: fixed;
+    bottom: 20px;
+    right:20px;
+    border-radius: 10px;
+    background:#2f2f2f;
+    color:#fff;
+    padding:10px 15px;
+    width:280px;
+    z-index:100;
+ }
+ .cookie-alert a { 
+    display:block;
+    text-align: center;
+    padding:5px 10px;
+    margin:8px auto 0 auto;
+    border-radius: 10px;
+    background:transparent;
+    border: 2px solid #46A2D9;
+    color:#46A2D9;
+    transition: all .3s ease;
+ }
+    .cookie-alert a:hover {
+       background: #46A2D9;
+       color:#2f2f2f;
+    }
+ @media only screen and (max-width:480px) {
+    .cookie-alert {
+       text-align: center;
+       left: 0; right: 0;;
+         margin: 0 auto;
+       max-width:700px;
+       padding:10px 30px;
+    }
+ }
+/* Fin style cookie */
+
 /* Version mobile */
 @media screen and (max-width: 750px) {
+    /* header mobile */
     header {
         display: flex;
         flex-direction: column;
@@ -642,15 +694,9 @@ input::-o-outer-spin-button {
     #interv {
         margin-top: auto;
     }
+    /* Fin header mobile */
 
-    .textPrix {
-        flex-direction: column-reverse;
-    }
-
-    #textCount {
-        width: 300px;
-    }
-
+    /* Nav mobile */
     nav {
         float: initial;
     }
@@ -679,12 +725,19 @@ input::-o-outer-spin-button {
         margin: 0;
         padding-left: 0;
     }
-
-    .textAff p {
-        font-size: 0.8em;
-        width: auto;
+    /* Fin du nav mobile */
+    
+    /* Style mobile du texte de la section ( prix + titre ) */
+    .textPrix {
+        flex-direction: column-reverse;
     }
 
+    #textCount {
+        width: 300px;
+    }
+    /* Fin style mobile du texte de la section ( prix + titre ) */
+
+    /* Mobile deuxième section */
     #sectionDeboss {
         height: auto;
     }
@@ -709,7 +762,32 @@ input::-o-outer-spin-button {
         font-size: 0.8em;
         text-align: center;
     }
+    /* Fin mobile deuxième section */
 
+    /* Version mobile page Commentaire */
+     .textAff p {
+        font-size: 0.8em;
+        width: auto;
+    }
+
+    /* Style page Gestion mobile */
+    #logout {
+        width: 50%;
+    }
+
+    /* Style mobile formulaire commentaire */
+    .commentaireZone {
+        height: auto;
+    }
+
+    /* Style mobile page A Propos */
+    .textPropos {
+        margin-right: auto;
+        margin-left: auto;
+        width: 90%;
+    }
+
+    /* Version mobile du footer */
     .zoneFooter {
         padding-top: 10%;
     }
@@ -732,5 +810,30 @@ input::-o-outer-spin-button {
     .mentions {
         height: 30px;
         width: 30px;
+    }
+}
+
+@media screen and (max-width:1150px) {
+
+    .headerD {
+        display: none;
+    }
+
+    .headerG h1 {
+        font-size: 2em;
+        margin-left: auto;
+        margin-right: auto;
+        width: 95%;
+    }
+
+    .text-incline {
+        font-size: 1.6em;
+        margin-bottom: auto;
+        margin-left: 0;
+        margin-top: 15%;
+    }
+
+    .barre {
+        display: none;
     }
 }

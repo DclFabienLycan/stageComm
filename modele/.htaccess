@@ -1,0 +1,12 @@
+#htaccess file
+
+<files .htaccess>
+order allow,deny
+deny from all
+</files> 
+
+# protége  pdo.json
+<files pdo.json>
+order allow,deny
+deny from all
+</files>

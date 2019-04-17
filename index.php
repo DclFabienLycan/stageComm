@@ -10,35 +10,14 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Rochester" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
-    <link rel="stylesheet" href="./css/design.css">
+    <link rel="stylesheet" href="css/design.css">
     <title>My DSP</title>
 </head>
 <body>
-    <header>
-        <div class="headerG">
-            <h1 class="dsp">My DSP</h1>
-            <div class="textHeader">
-                <p class="text-incline">Débosselage Sans Peinture</p>
-                <hr class="barre">
-            </div>
-            <p id="interv">Intervention chez professionnel et particulier</p>
-        </div>
-        <div class="headerD">
-            <div id="carouselExampleSlidesOnly" class="slide" data-ride="carousel">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="https://via.placeholder.com/700x200" class="d-block w-100" alt="...">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="https://via.placeholder.com/700x200" class="d-block w-100" alt="...">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="https://via.placeholder.com/700x200" class="d-block w-100" alt="...">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
+<?php 
+    include 'include/header.php';
+?>
+    <!-- Menu de Navigation bootstrap -->
     <div class="menuD">
         <nav class="navbar navbar-expand-lg navbar-light">
             <button class="navbar-toggler burger" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
@@ -47,7 +26,7 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo01">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="index.html">Accueil</a>
+                        <a class="nav-link" href="index.php">Accueil</a>
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link" href="vue/gestion.php">Gestion</a>
@@ -56,10 +35,10 @@
                         <a class="nav-link" href="vue/commentaire.php">Commentaire</a>
                     </li>
                     <li class="nav-item active">
-                        <a href="vue/apropos.html" class="nav-link">a propos</a>
+                        <a href="vue/apropos.php" class="nav-link">a propos</a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="php/contactForm.php">Contact</a>
+                        <a class="nav-link" href="vue/contactForm.php">Contact</a>
                     </li>
                 </ul>
             </div>
@@ -68,32 +47,56 @@
     <main>
         <!-- Première section de la page d'accueil -->
         <section id="sectionCarr">
-            <!-- Carroussel d'image, pour montrer réalisations -->
+            <!-- Carroussel d'image bootstrap, pour montrer réalisations -->
             <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
                         <img src="css/img/photo/206HayonGaucheAv.jpg" class="d-block w-100" alt="...">
                     </div>
                     <div class="carousel-item">
+                        <img src="css/img/photo/206HayonGaucheAp.jpg" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
                         <img src="css/img/photo/308swHayonDroitAv.jpg" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="css/img/photo/308swHayonDroitAp.jpg" class="d-block w-100" alt="...">
                     </div>
                     <div class="carousel-item">
                         <img src="css/img/photo/c5AileArDroitAV.jpg" class="d-block w-100" alt="...">
                     </div>
                     <div class="carousel-item">
+                        <img src="css/img/photo/c5AileArDroitAp.jpg" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
                         <img src="css/img/photo/micraHayonDroitAv.jpg" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="css/img/photo/micraHayonDroitAp.jpg" class="d-block w-100" alt="...">
                     </div>
                     <div class="carousel-item">
                         <img src="css/img/photo/montantArGaucheAv.jpg" class="d-block w-100" alt="...">
                     </div>
                     <div class="carousel-item">
+                        <img src="css/img/photo/montantArGaucheAp.jpg" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
                         <img src="css/img/photo/porteArDroitAv.jpg" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="css/img/photo/porteArDroitAp.jpg" class="d-block w-100" alt="...">
                     </div>
                     <div class="carousel-item">
                         <img src="css/img/photo/puntoHayonDroitAv.jpg" class="d-block w-100" alt="...">
                     </div>
                     <div class="carousel-item">
+                        <img src="css/img/photo/puntoHayonDroitAp.jpg" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
                         <img src="css/img/photo/sciroccoHayonGaucheAv.jpg" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="css/img/photo/sciroccoHayonGaucheAp.jpg" class="d-block w-100" alt="...">
                     </div>
                 </div>
             </div>
@@ -130,6 +133,7 @@
             <a href=""><img src="css/img/mentionsL.svg" alt="mentionsLegales" class="mentions"></a>
             <a href=""><img src="css/img/map.svg" alt="localisation" class="map"></a>
         </div>
+        <?php include 'include/footer_cookie.php'; ?>
     </footer>
     
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

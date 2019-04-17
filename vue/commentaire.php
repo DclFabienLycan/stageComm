@@ -1,5 +1,6 @@
 <?php
-require '../php/modele/pdo.php';
+// Connexion à la BDD
+require '../modele/pdo.php';
 ?>
 
 <!DOCTYPE html>
@@ -19,31 +20,10 @@ require '../php/modele/pdo.php';
     <title>My DSP</title>
 </head>
 <body>
-    <header>
-        <div class="headerG">
-            <h1 class="dsp">My DSP</h1>
-            <div class="textHeader">
-                <p class="text-incline">Débosselage Sans Peinture</p>
-                <hr class="barre">
-            </div>
-            <p id="interv">Intervention chez professionnel et particulier</p>
-        </div>
-        <div class="headerD">
-            <div id="carouselExampleSlidesOnly" class="slide" data-ride="carousel">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="https://via.placeholder.com/700x200" class="d-block w-100" alt="...">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="https://via.placeholder.com/700x200" class="d-block w-100" alt="...">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="https://via.placeholder.com/700x200" class="d-block w-100" alt="...">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
+<?php
+    include '../include/header.php';
+?>
+    <!-- Menu de Navigation bootstrap -->
     <div class="menuD">
         <nav class="navbar navbar-expand-lg navbar-light">
             <button class="navbar-toggler burger" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
@@ -52,7 +32,7 @@ require '../php/modele/pdo.php';
             <div class="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo01">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="../index.html">Accueil</a>
+                        <a class="nav-link" href="../index.php">Accueil</a>
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link" href="gestion.php">Gestion</a>
@@ -61,29 +41,35 @@ require '../php/modele/pdo.php';
                         <a class="nav-link" href="commentaire.php">Commentaire</a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="apropos.html" >a propos</a>
+                        <a class="nav-link" href="apropos.php" >a propos</a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="../php/contactForm.php">Contact</a>
+                        <a class="nav-link" href="contactForm.php">Contact</a>
                     </li>
                 </ul>
             </div>
         </nav>
     </div>
     <main>
+        <!-- Affichage des commentaires -->
         <section class="affichageCommentaire mb-4 pt-4 pb-4">
             <div class="appelAffichage mb-4 pt-4">
                 <?php
                     $resultat = $pdo->query("SELECT * FROM commentaires NATURAL JOIN utilisateurs WHERE statuts = '1'");
                     $selectResult = $resultat->fetchAll();
                     $i=0;
+                    
                 // Pour chaque commentaire avec le statuts '1', les affichers
                 foreach ($selectResult as $selectResults) { 
                     $i++; 
                     $id = $selectResults->idCommentaire;
+                    
                 ?>
                 <div class="container affiComm">
                     <h3 class="text-center titreComm">Commentaire :</h3>
+                    <div class="row zoneRow">
+                        <div class="col-sm-6 mb-4 textAffi offset-md-3">Commentaire posté le : <?= $selectResults->dateCommentaire  ?></div>
+                    </div>
                     <div class="row zoneRow">
                         <div class="col-sm-6 textAffi offset-md-3">
                         <?php
@@ -115,6 +101,7 @@ require '../php/modele/pdo.php';
                 <?php } ?>    
             </div>
         </section>
+        <!-- Zone du formulaire d'envoi de commentaire -->
        <section class="commentaireZone mb-4 pt-4">
             <form action="" method="POST">
                 <div class="container formulaireComm">
@@ -174,7 +161,7 @@ require '../php/modele/pdo.php';
 
 <?php 
 
-require '../php/modele/pdo.php';
+require '../modele/pdo.php';
 
 // L' ajout de commentaire dans la bdd via formulaire
 
@@ -188,8 +175,9 @@ if (isset($_POST['submit'])) {
         $utilisateur->execute();
 
         $id = $pdo->lastInsertId();
+        // $date = NOW();
 
-        $commentaire = $pdo->prepare("INSERT INTO commentaires SET contenuCommentaire = :comment, noteCommentaire = :note, statuts = '0', idUtilisateur = :id");
+        $commentaire = $pdo->prepare("INSERT INTO commentaires SET contenuCommentaire = :comment, noteCommentaire = :note, dateCommentaire = NOW(), statuts = '0', idUtilisateur = :id");
         $commentaire->bindParam(':comment', $_POST['messCommentaire']);
         $commentaire->bindParam(':note', $_POST['star']);
         $commentaire->bindParam(':id', $id);
